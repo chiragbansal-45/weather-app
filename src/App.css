@@ -1,38 +1,105 @@
-.App {
-  text-align: center;
-}
+/* .border-none{
+  border: none;
+   */
+  
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.max-size{
+  max-width: 200px;
+  max-height: 200px;
+/* }
+.weather{
+  margin: auto;
+  width: 50%; */
+
+}
+.shadow{
+  box-shadow: 5px 10px 8px #888888;
+  padding: 2rem;
+  border: none;
+  margin: auto;
+  justify-content: space-around;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  width: 50%;
+  
+}
+/* .flex-container{
+  display: flex;
+  
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  box-shadow: 0px 10px 10px #888888;
+  height: 100%;
+  width: 100%;
+  background-color: #f6f5fa;
+  margin: 0px auto;
+  border-radius: 20px;
+  max-width: 472px;
+  max-height: 246px;
+} */
+.image{
+  align-self: center;
+  display: block;
+  height: 182px;
+  width: 126px;
+}
+.inside-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 2rem;
+
+}
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #F6F5FA;
+  width: 100%;
+  max-width: 472px;
+  height: 100%;
+  max-height: 400px;
+  margin: 0 auto;
+  border-radius: 20px;
+  box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.16);
+}
+@media only screen and (min-width:600px) {
+  .Card {
+      max-width: 472px;
+      max-height: 246px;
+  }   
+}
+.data{
+  margin: 0 5rem;
+  align-self: center;
 }
 
-.App-link {
-  color: #61dafb;
+
+.weather{
+  display: block;
+  margin-top: .5rem;
+  padding: 0;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  line-height: normal;
+  font-size: 1.875rem;
+  color: #333333;
+  border: none;
+  border-bottom: 2px solid #d6d6d6;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+
+
+
+/* new css */
+.center{
+  margin: 2rem auto;
+  width: 50%;
+  
+
 }
