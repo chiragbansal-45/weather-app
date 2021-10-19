@@ -12,7 +12,8 @@ class Main extends Component{
             details: {
                 temprature: null,
                 description: ''
-            }
+            },
+            isFetching: false,
         }
     }
         onChange=(e) => {
@@ -25,6 +26,7 @@ class Main extends Component{
             const API_URL = 'https://api.openweathermap.org/data/2.5/weather';
             const URL = API_URL + `?q=${city}&appid=${API_KEY}&units=metric`;
            if (city && city.trim().length > 0) {
+               this.setState({ isFetching: true })
             fetch(URL)
                 .then(response => {
                     if (response.ok) return response;
@@ -44,8 +46,8 @@ class Main extends Component{
                             details: {
                                 temprature: data.main.temp,
                                 description: data.weather[0].main
-                            }
-                            
+                            },
+                            isFetching: false
                         });
                         console.log(this.state.details.temprature);
                     }
@@ -59,7 +61,8 @@ class Main extends Component{
                             searchBarInput: '',
                             details: {
                                 temprature: null,
-                                description: ''
+                                description: '',
+                                isFetching: false
                             }
                             
                         });
@@ -70,7 +73,8 @@ class Main extends Component{
                 this.setState({
                     details: {
                         temprature: null,
-                        description: ''
+                        description: '',
+                        isFetching: false
                     }
                     
                 });
@@ -85,7 +89,7 @@ class Main extends Component{
                 <Search value={this.state.searchBarInput} 
                         onChange={this.onChange}
                         onClick={this.setWeather}/>
-                <WeatherInfo data={this.state.details}/>
+                {this.state.searchBarInput && !this.state.isFetching && !this.state.details ? "No data available." : <WeatherInfo data={this.state.details}/>}
                 <Footer />
             </div>
         )
