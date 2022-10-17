@@ -40,6 +40,15 @@ const Search = (props) => {
             {" "}
             search{" "}
           </Button>
+          <Button
+            className="btn btn-primary"
+            type="button"
+            id="clear"
+            onClick={props.onClick}
+          >
+            {" "}
+            Clear{" "}
+          </Button>
         </div>
       </Form>
     </div>

@@ -1,8 +1,26 @@
+import React, { Component } from "react";
 import React, { useStaet } from "react";
 import Header from "./HeaderComponent";
 import Search from "./SearchComponent";
 import WeatherInfo from "./CardComponent";
 import Footer from "./FooterComponent";
+
+class Main extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      searchBarInput: "",
+      details: {
+        temprature: null,
+        description: "",
+      },
+    };
+  }
+  onChange = (e) => {
+    this.setState({ searchBarInput: e ? e.target.value : "" });
+  };
+  setWeather = () => {
+    const city = this.state.searchBarInput;
 
 const Main = () => {
   const [state, setState] = React.useState({
@@ -48,17 +66,42 @@ const Main = () => {
         )
         .then((data) => {
           if (data && data.cod === 200) {
+            this.setState({
+        )
+        .then(
+          (response) => {
+            if (response) return response.json();
+          },
+          (error) => {
+            console.log(error);
+            return null;
+          }
+        )
+        .then((data) => {
+          if (data && data.cod === 200) {
             setState({
               details: {
                 temprature: data.main.temp,
                 description: data.weather[0].main,
               },
+            });
+            console.log(this.state.details.temprature);
+          } else if (data.cod === 404) {
+            this.setState({
+              details: {
+                temprature: 0,
+                description: "Empty",
+              },
+            });
+            console.log(this.state.details.temprature);
               isFetching: false,
             });
           } else if (data) {
             throw data.cod;
           } else {
             alert("City not found...");
+            this.onChange(null);
+            this.setState({
             onChange(null);
             setState({
               searchBarInput: "",
@@ -71,6 +114,10 @@ const Main = () => {
           }
         });
     } else {
+      this.setState({
+        details: {
+          temprature: null,
+          description: "",
       setState({
         details: {
           temprature: null,
@@ -81,6 +128,24 @@ const Main = () => {
     }
   };
 
+
+  render() {
+    console.log(this.state);
+    return (
+      <div>
+        <Header />
+        <Search
+          value={this.state.searchBarInput}
+          onChange={this.onChange}
+          onClick={this.setWeather}
+          onBlur={this.onChange}
+        />
+        <WeatherInfo data={this.state.details} />
+        <Footer />
+      </div>
+    );
+  }
+}
   return (
     <div>
       <Header />

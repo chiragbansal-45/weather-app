@@ -1,14 +1,19 @@
-import React from "react";
+import React, { Component } from "react";
 import { Navbar, NavbarBrand } from "reactstrap";
 
-const Header = () => (
-  <div className="app">
-    <Navbar dark color="primary">
-      <div className="container">
-        <NavbarBrand href="/"> CHIRAG BANSAL </NavbarBrand>
+class Header extends Component {
+  render() {
+    return (
+      <div className="app">
+        <Navbar dark color="primary">
+          <div className="container">
+            <NavbarBrand href="/"> CHIRAG BANSAL </NavbarBrand>
+            <NavbarBrand href="/"> Kaushik BANSAL </NavbarBrand>
+          </div>
+        </Navbar>
       </div>
-    </Navbar>
-  </div>
-);
+    );
+  }
+}
 
 export default Header;
